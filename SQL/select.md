@@ -8,11 +8,11 @@ example:
 
 ```sql
     SELECT id, product, price, stock, category 
-    FROM products;
+    FROM tech_product;
 
     -- OR 
     -- use the * symbol to get all the columns 
-    SELECT * FROM product;
+    SELECT * FROM tech_product;
 ```
 result: 
 | id | product  | price   | stock | category    |
@@ -30,7 +30,7 @@ to add an alias to the column name use the command `AS`
 example: 
 ```sql
     SELECT id, product, price, stock AS 'quantity'
-    FROM product;
+    FROM tech_product;
 ```
 
 result: 
@@ -50,7 +50,7 @@ ORDER BY: sort the results by column `ASC`(ascending) or `DESC`(descending)
 example: 
 ```sql
     SELECT id, product, price, stock, category
-    FROM product
+    FROM tech_product
     -- only products more expensive than $1000
     WHERE price > 1000
     -- order the results (expensive to cheaper) 
@@ -72,7 +72,7 @@ example:
 ```sql
     -- show the amount of products in each category
     SELECT category, COUNT(product) as 'total_items' 
-    FROM product 
+    FROM tech_product 
     -- group the duplicated categories
     GROUP BY category
     -- only categories that have at least 1 item
@@ -97,7 +97,7 @@ the pattern can use `%` and `_` wildcards for unknown characters
 example:
 ```sql
     SELECT id, product, price, stock, category 
-    FROM product
+    FROM tech_product
     -- return a product that have one character after 'ndr'
     -- and can have 0 or many characters after 'ndr'
     WHERE product LIKE '_ndr%';
@@ -114,7 +114,7 @@ return only different values
 example:
 ```sql
     SELECT DISTINCT category
-    FROM product;
+    FROM tech_product;
 ```
 
 result:
@@ -131,7 +131,7 @@ return results in between specified values
 example:
 ```sql 
     SELECT id, product, price, stock, category
-    FROM product
+    FROM tech_product
     WHERE price BETWEEN 100 AND 1000;
 ```
 
@@ -148,7 +148,7 @@ return the results that match to any of the values in the specified list
 example:
 ```sql
     SELECT id, product, price, stock, category  
-    FROM product
+    FROM tech_product
     -- only products IN hardware or peripherals categories
     WHERE category IN ('hardware', 'peripherals');
 ```
