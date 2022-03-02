@@ -48,7 +48,7 @@ result:
 example: 
 
 ```sql
-    SELECT id, product, price, stock
+    SELECT id, product, price, stock, category
     FROM product
     -- only products more expensive than $1000
     WHERE price > 1000

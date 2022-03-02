@@ -3,7 +3,7 @@ Studies about PHP and SQL
 
 # SQL
 
-- ## [SELECT]('SQL/select.md')
+- ## [SELECT](SQL/select.md)
     - SELECT *
     - SELECT columns 
     - WHERE
