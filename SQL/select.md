@@ -1,15 +1,19 @@
 # SELECT
 
-## SELECT ALL
-return all table data
+## Basic SELECT
+select all data from the table
 
 example: 
 
 ```sql
+    SELECT id, product, price, stock, category 
+    FROM products;
+
+    -- OR 
+    -- use the * symbol to get all the columns 
     SELECT * FROM product;
 ```
 result: 
-
 | id | product  | Price   | stock | category    |
 |:--:|:--------:|:-------:|:-----:|:-----------:|
 | 1  | RAM 8GB  | 250.00  | 50    | hardware    |
@@ -19,19 +23,16 @@ result:
 | 5  | Iphone   | 1566.00 | 25    | smartphone  |
 
 
-## SELECT columns 
-return data from the specified columns
-to add an alias to the column name use the command: `AS` 
+## AS (alias)
+to add an alias to the column name use the command `AS` 
 
 example: 
-
 ```sql
     SELECT id, product, price, stock AS 'quantity'
     FROM product;
 ```
 
 result: 
-
 | id | product  | Price   | quantity |
 |:--:|:--------:|:-------:|:--------:|
 | 1  | RAM 8GB  | 250.00  | 50       |
@@ -42,11 +43,10 @@ result:
 
 
 ## WHERE and ORDER BY 
-- WHERE: filter data that fulfill a condition
-- ORDER BY: sort the results by column `ASC`(ascending) or `DESC`(descending)
+WHERE: filter data that fulfill a condition  
+ORDER BY: sort the results by column `ASC`(ascending) or `DESC`(descending)
 
 example: 
-
 ```sql
     SELECT id, product, price, stock, category
     FROM product
@@ -57,7 +57,6 @@ example:
 ```
 
 result: 
-
 | id  | product  | Price   | stock | category    |
 |:---:|:--------:|:-------:|:-----:|:-----------:|
 | 5   | Iphone   | 1566.00 | 25    | smartphone  |
@@ -65,11 +64,10 @@ result:
 
 
 ## GROUP BY and HAVING
-GROUP BY: group rows that have the same value
+GROUP BY: group rows that have the same value  
 HAVING: filter data that fulfill a condition (in groups)
 
 example: 
-
 ```sql
     -- show the amount of products in each category
     SELECT category, COUNT(product) as 'total_items' 
@@ -81,7 +79,6 @@ example:
 ```
 
 result: 
-
 |   category  | total_items |
 |:-----------:|:-----------:|
 |   hardware  |      1      |
