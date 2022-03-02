@@ -10,3 +10,7 @@ Studies about PHP and SQL
     - ORDER BY
     - GROUP BY
     - HAVING
+    - LIKE
+    - DISTINCT
+    - BETWEEN
+    - IN
