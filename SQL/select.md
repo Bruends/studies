@@ -84,7 +84,7 @@ result:
 | peripherals |      2      |
 
 
-# Subquerys
+# Subquery
 a query inside another query, commonly used in WHERE conditions
 
 example: 
