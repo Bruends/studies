@@ -11,7 +11,7 @@ Studies about PHP and SQL
     - HAVING
     - Subquery
 
-## [WHERE And Keywords](SQL/whereAndKeywords.md)
+- ## [WHERE And Keywords](SQL/whereAndKeywords.md)
     - WHERE
     - LIKE
     - DISTINCT
