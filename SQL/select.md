@@ -1,8 +1,5 @@
 # SELECT
-examples are tested in MySQL
-
-## Basic SELECT
-select all data from the table
+return data from the table
 
 example: 
 
@@ -43,25 +40,25 @@ result:
 | 5  | Iphone   | 1566.00 | 25       |
 
 
-## WHERE and ORDER BY 
-WHERE: filter data that fulfill a condition  
-ORDER BY: sort the results by column `ASC`(ascending) or `DESC`(descending)
+## ORDER BY 
+sort the results by column `ASC`(ascending) or `DESC`(descending)
 
 example: 
 ```sql
     SELECT id, product, price, stock, category
     FROM tech_product
-    -- only products more expensive than $1000
-    WHERE price > 1000
     -- order the results (expensive to cheaper) 
-    ORDER BY price DESC;
+    ORDER BY id DESC;
 ```
 
 result: 
-| id  | product  | price   | stock | category    |
-|:---:|:--------:|:-------:|:-----:|:-----------:|
-| 5   | Iphone   | 1566.00 | 25    | smartphone  |
-| 2   | Android  | 1100.96 | 26    | smartphone  |
+| id | product  | price   | stock | category    |
+|:--:|:--------:|:-------:|:-----:|:-----------:|
+| 5  | Iphone   | 1566.00 | 25    | smartphone  |
+| 4  | Keyboard | 98.99   | 66    | peripherals |
+| 3  | Headset  | 103.98  | 54    | peripherals |
+| 2  | Android  | 1100.96 | 26    | smartphone  |
+| 1  | RAM 8GB  | 250.00  | 50    | hardware    |
 
 
 ## GROUP BY and HAVING
@@ -86,76 +83,22 @@ result:
 |  smartphone |      2      |
 | peripherals |      2      |
 
-## Keywords
 
-### LIKE
-find values that match a specified pattern  
-the pattern can use `%` and `_` wildcards for unknown characters    
-`%` is equivalent to `zero or more characters`  
-`_` is equivalent to `one character`  
+# Subquerys
+a query inside another query, commonly used in WHERE conditions
 
-example:
+example: 
 ```sql
-    SELECT id, product, price, stock, category 
+    SELECT id, product, price
     FROM tech_product
-    -- return a product that have one character after 'ndr'
-    -- and can have 0 or many characters after 'ndr'
-    WHERE product LIKE '_ndr%';
-```
-
-result: 
-| id | product  | price   | stock | category    |
-|:--:|:--------:|:-------:|:-----:|:-----------:|
-| 2  | Android  | 1100.96 | 26    | smartphone  |
-
-### DISTINCT 
-return only different values
-
-example:
-```sql
-    SELECT DISTINCT category
-    FROM tech_product;
+    WHERE price = (
+        -- find the most expensive item
+        SELECT MAX(price)
+        FROM tech_product
+    );
 ```
 
 result:
-|   category  |
-|:-----------:|
-|   hardware  |
-|  smartphone |
-| peripherals |
-
-
-### BETWEEN
-return results in between specified values 
-
-example:
-```sql 
-    SELECT id, product, price, stock, category
-    FROM tech_product
-    WHERE price BETWEEN 100 AND 1000;
-```
-
-result: 
-| id | product  | price   | stock | category    |
-|:--:|:--------:|:-------:|:-----:|:-----------:|
-| 1  | RAM 8GB  | 250.00  | 50    | hardware    |
-| 3  | Headset  | 103.98  | 54    | peripherals |
-
-
-### IN
-return the results that match to any of the values in the specified list
-
-example:
-```sql
-    SELECT id, product, price, stock, category  
-    FROM tech_product
-    -- only products IN hardware or peripherals categories
-    WHERE category IN ('hardware', 'peripherals');
-```
-
-result:
-| id | product  | price   | stock | category    |
-|:--:|:--------:|:-------:|:-----:|:-----------:|
-| 1  | RAM 8GB  | 250.00  | 50    | hardware    |
-| 3  | Headset  | 103.98  | 54    | peripherals |
-| 4  | Keyboard | 98.99   | 66    | peripherals |
+| id | product  | Price   | stock | category    |
+|----|----------|---------|-------|-------------|
+| 5  | Iphone   | 1566.00 | 25    | smartphone  |
