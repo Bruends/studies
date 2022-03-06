@@ -17,3 +17,8 @@ Studies about PHP and SQL
     - DISTINCT
     - BETWEEN
     - IN
+
+- ## [JOINS](SQL/joins.md)
+    - INNER
+    - FULL
+    - LEFT and RIGHT
