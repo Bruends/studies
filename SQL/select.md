@@ -4,12 +4,12 @@ return data from the table
 example: 
 
 ```sql
-    SELECT id, product, price, stock, category 
-    FROM tech_product;
+SELECT id, product, price, stock, category 
+FROM tech_product;
 
-    -- OR 
-    -- use the * symbol to get all the columns 
-    SELECT * FROM tech_product;
+-- OR 
+-- use the * symbol to get all the columns 
+SELECT * FROM tech_product;
 ```
 result: 
 | id | product  | price   | stock | category    |
@@ -26,8 +26,8 @@ to add an alias to the column name use the command `AS`
 
 example: 
 ```sql
-    SELECT id, product, price, stock AS 'quantity'
-    FROM tech_product;
+SELECT id, product, price, stock AS 'quantity'
+FROM tech_product;
 ```
 
 result: 
@@ -45,10 +45,10 @@ sort the results by column `ASC`(ascending) or `DESC`(descending)
 
 example: 
 ```sql
-    SELECT id, product, price, stock, category
-    FROM tech_product
-    -- order the results (expensive to cheaper) 
-    ORDER BY id DESC;
+SELECT id, product, price, stock, category
+FROM tech_product
+-- order the results (expensive to cheaper) 
+ORDER BY id DESC;
 ```
 
 result: 
@@ -67,13 +67,13 @@ HAVING: filter data that fulfill a condition (in groups)
 
 example: 
 ```sql
-    -- show the amount of products in each category
-    SELECT category, COUNT(product) as 'total_items' 
-    FROM tech_product 
-    -- group the duplicated categories
-    GROUP BY category
-    -- only categories that have at least 1 item
-    HAVING COUNT(product) > 0;
+-- show the amount of products in each category
+SELECT category, COUNT(product) as 'total_items' 
+FROM tech_product 
+-- group the duplicated categories
+GROUP BY category
+-- only categories that have at least 1 item
+HAVING COUNT(product) > 0;
 ```
 
 result: 
@@ -89,13 +89,13 @@ a query inside another query, commonly used in WHERE conditions
 
 example: 
 ```sql
-    SELECT id, product, price
+SELECT id, product, price
+FROM tech_product
+WHERE price = (
+    -- find the most expensive item
+    SELECT MAX(price)
     FROM tech_product
-    WHERE price = (
-        -- find the most expensive item
-        SELECT MAX(price)
-        FROM tech_product
-    );
+);
 ```
 
 result:

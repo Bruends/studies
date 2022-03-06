@@ -29,11 +29,11 @@ show `all matching` data in specified tables
 
 example: 
 ```sql
-    SELECT p.product_name, c.category_name 
-    FROM product AS p
-    -- only show products that have categories
-    -- and categories that have products
-    INNER JOIN category AS c ON c.id = p.category_id;
+SELECT p.product_name, c.category_name 
+FROM product AS p
+-- only show products that have categories
+-- and categories that have products
+INNER JOIN category AS c ON c.id = p.category_id;
 ```
 
 result:
@@ -52,11 +52,11 @@ show `all` data from both tables
 
 example: 
 ```sql
-    SELECT p.product_name, c.category_name 
-    FROM product AS p
-    -- only show products that have categories
-    -- and categories that have products
-    FULL JOIN category AS c ON c.id = p.category_id;
+SELECT p.product_name, c.category_name 
+FROM product AS p
+-- only show products that have categories
+-- and categories that have products
+FULL JOIN category AS c ON c.id = p.category_id;
 ```
 
 result:
@@ -80,12 +80,12 @@ RIGHT: all from right and matching from left
 
 example: 
 ```sql
-    SELECT p.product_name, c.category_name 
-    FROM product AS p
-    -- show all categories that have or not a product
-    -- only show products that have categories
-    RIGHT JOIN category AS c ON c.id = p.category_id;
-    -- LEFT JOIN will show the oposite
+SELECT p.product_name, c.category_name 
+FROM product AS p
+-- show all categories that have or not a product
+-- only show products that have categories
+RIGHT JOIN category AS c ON c.id = p.category_id;
+-- LEFT JOIN will show the oposite
 ```
 
 result:
