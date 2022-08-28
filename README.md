@@ -1,6 +1,3 @@
-# Today i Learned PHP and SQL (MySQL)
-Studies about PHP and SQL
-
 # SQL
 
 - ## [SELECT](SQL/select.md)
